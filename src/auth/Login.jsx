@@ -1,48 +1,110 @@
-import React from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { TextField, Button, Typography } from '@mui/material'; // Import Material-UI components
+import { URL } from '../Baseurl';
+import './login.css'; // Import external CSS file
 
 const Login = () => {
-    return (
-        <div>
-            <span>
-                <img src="./images/logo_new.jpg" class="w-20 sm:w-36 mt-4" alt="" />
-            </span>
-            <div class=" flex flex-row justify-center">
-                <div class="flex justify-center items-center ">
-                    <div>
-                        <p class="text-primary text-lg font-medium text-center m-0"><u>Hello Admin!</u></p>
-                        <h1 class="text-primary m-0 text-3xl font-bold text-center mb-6">Welcome Back</h1>
-                        <div class="bg-secondary h-96 flex flex-row items-center shadow-md rounded-md p-10">
-                            <div class="sm:w-80">
-                                <div
-                                    class="d-flex justify-center items-center text-primary  m-0  text-3xl font-bold text-center">
-                                    Log In
-                                </div>
-                                <div>
-                                    <form action="">
-                                        <div class="form-gruop mt-10">
-                                            <label class="mb-4 font-medium pl-2">Email</label><br />
-                                            <input type="text"
-                                                class="bg-light_gray focus:ring-0 focus:outline-none h-8 w-full  border-[1px] rounded-[0.2rem] border-gray_light p-4"
-                                                placeholder="Enter your Email" />
-                                        </div>
-                                        <div class="form-gruop mt-5">
-                                            <label class="mb-4 font-medium pl-2">Password</label><br />
-                                            <input type="password"
-                                                class="bg-light_gray focus:ring-0 focus:outline-none h-8 w-full  border-[1px] rounded-[0.2rem] border-gray_light p-4" />
-                                        </div>
-                                        <button class="bg-primary text-white w-full rounded-[0.2rem] mt-8 p-1">
-                                            <a class="no-underline w-full" href="#">Log
-                                                In</a>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-export default Login
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(`${URL}/login`, {
+        username: username,
+        email: 'string',
+        password: password,
+        phone_number: 'string',
+        input_code: 0,
+      });
+
+      // Assuming the token is received in response.data.token
+      console.log(response.data);
+      const token = 'Admin login ';
+
+      // Save token to local storage
+      localStorage.setItem('token', token);
+
+      // Navigate to dashboard after successful login
+      navigate('/dashboard');
+      window.location.reload();
+    } catch (error) {
+      console.error('Error occurred:', error);
+    }
+  };
+
+  return (
+    <div>
+      <span>
+        <img src="./images/logo_new.jpg" className="w-20 sm:w-36 mt-4" alt="" />
+      </span>
+
+      <div className="login-container">
+        <div className="login-wrapper">
+          <div className="login-card">
+            <Typography
+              variant="h5"
+              align="center"
+              color="primary"
+            ></Typography>
+            <Typography
+              variant="h4"
+              align="center"
+              color="primary"
+              gutterBottom
+            >
+              Welcome
+            </Typography>
+            <div className="login-heading">
+              <Typography
+                variant="h5"
+                align="center"
+                color="primary"
+                gutterBottom
+              >
+                Log In
+              </Typography>
+            </div>
+            <form onSubmit={handleSubmit} className="login-form">
+              <div className="label-input-container">
+                <Typography variant="subtitle1">Username</Typography>
+                <TextField
+                  variant="outlined"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  fullWidth
+                  required
+                />
+              </div>
+              <div className="label-input-container">
+                <Typography variant="subtitle1">Password</Typography>
+                <TextField
+                  type="password"
+                  variant="outlined"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  fullWidth
+                  required
+                />
+              </div>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
+                Log In
+              </Button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
