@@ -3,7 +3,11 @@
     width: 12rem;
     padding: 10px;
     height: 100%;
+    /* position: static; */
+}
+.sidenav{
     position: fixed;
+    height: 100%;
 }
 .list{
     padding: 5px 10px;
@@ -19,8 +23,12 @@
         color: #0068f7;
     }
 }
-.list:active{
+.active{
     background-color: white;
+    color: #333333;
+    svg{
+        color: #0068f7;
+    }
 }
 .heading{
     padding-left:0.5rem;
@@ -28,37 +36,13 @@
     font-weight: 500;
 }
 
+.buttom-img{
+    width: 2rem;
+}
+.buttom{
+    padding: 5px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 1rem;
+}
 
-
-
-
-.flex{
-    display: flex;
-}
-.flex-wrap{
-    flex-wrap: wrap;
-}
-.flex-col{
-    flex-direction: column;
-}
-.items-center{
-    align-items: center;
-}
-.jc-c{
-    justify-content: center;
-}
-.jc-sb{
-    justify-content: space-between;
-}
-.gap-0{
-    gap: 0.5rem;
-}
-.gap-1{
-    gap:1rem
-}
-.gap-2{
-    gap: 2rem;
-}
-.gap-3{
-    gap: 3rem;
-}

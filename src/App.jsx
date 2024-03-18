@@ -9,14 +9,18 @@ import Navbar from './Componets/Navbar/Navbar';
 function App() {
   return (
     <>
-    <Navbar/>
-    <BrowserRouter> {/* Use BrowserRouter instead of Router */}
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-    </Routes>
-  </BrowserRouter> 
-   </>
+      <div className="main-root">
+        <Navbar />
+        <BrowserRouter> {/* Use BrowserRouter instead of Router */}
+          <div className="w-full">
+            <Routes >
+              <Route path="/" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
+    </>
   );
 }
 
