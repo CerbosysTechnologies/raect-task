@@ -28,7 +28,11 @@ const Login = () => {
 
       // Save token to local storage
       localStorage.setItem('token', token);
-
+      localStorage.setItem('username', username);
+      localStorage.setItem('password', password);
+      console.log(username);
+      // Set token in axios defaults for all future requests
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       // Navigate to dashboard after successful login
       navigate('/dashboard');
       window.location.reload();

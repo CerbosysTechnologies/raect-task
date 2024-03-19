@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import salesData from '../../../jsonData/salesData.json';
+import Mostpositive from '../Mostpositive/Mostpositive';
 
 const MyLineChart = () => {
   const [lineVisibility, setLineVisibility] = useState({
@@ -64,6 +65,7 @@ const MyLineChart = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
+      <Mostpositive />
     </>
   );
 };
