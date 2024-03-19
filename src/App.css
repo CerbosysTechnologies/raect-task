@@ -74,3 +74,24 @@ body {
   box-shadow: none !important;
   border-radius: 0px !important;
 }
+:root {
+  --scrollbar-width: 5px; /* Set your desired scrollbar width */
+}
+
+/* Define scrollbar styles */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Adjust as needed */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Adjust as needed */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Adjust as needed */
+}

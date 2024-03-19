@@ -5,6 +5,9 @@ import person from './image/status manager.png'
 const Navbar = () => {
     return (
         <>
+        <div className='navbar1'>
+
+       
             <div className='container'>
                 <div className='sidenav '>
                     <div className="flex flex-col gap-0">
@@ -48,7 +51,7 @@ const Navbar = () => {
                         Tom Wang
                     </div>
                 </div>
-            </div>
+            </div> </div>
         </>
     )
 }
