@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+import { Typography } from '@mui/material';
+import './Mostpositive.css';
+import { URL } from '../../../Baseurl';
 const Mostpositive = () => {
   const [sentimentData, setSentimentData] = useState(null);
 
@@ -8,7 +10,7 @@ const Mostpositive = () => {
     const password = localStorage.getItem('password');
 
     if (username && password) {
-      fetch('http://3.227.101.169:8020/api/v1/sample_assignment_api_5/', {
+      fetch(`${URL}/sample_assignment_api_5`, {
         headers: {
           Authorization: `Basic ${btoa(`${username}:${password}`)}`, // Encode username and password as base64
         },
@@ -39,14 +41,30 @@ const Mostpositive = () => {
         marginTop: '1rem',
       }}
     >
-      <h2>Sentiment Analysis</h2>
       <div>Community Feedback</div>
       <h1 className="dashboard-head">Mostly Positive</h1>
+
+      <div className="line">
+        <div className="div1"></div>
+        <div className="div2"></div>
+        <div className="div3"></div>
+      </div>
       {sentimentData && (
-        <div>
-          <p>Negative: {sentimentData.negative}</p>
-          <p>Positive: {sentimentData.positive}</p>
-          <p>Neutral: {sentimentData.neutral}</p>
+        <div className="flex">
+          <p>
+            Negative:{' '}
+            <span style={{ fontWeight: 'bold' }}>{sentimentData.negative}</span>
+          </p>
+          <p>
+            Positive:{' '}
+            <span style={{ fontWeight: 'bold', marginTop: '5px' }}>
+              {sentimentData.positive}
+            </span>
+          </p>
+          <p>
+            Neutral:{' '}
+            <span style={{ fontWeight: 'bold' }}>{sentimentData.neutral}</span>
+          </p>
         </div>
       )}
     </div>

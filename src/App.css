@@ -18,8 +18,11 @@
 .outsidedive {
   padding: 5px !important;
   /* max-width: 1440px !important; */
+  /* background-color: #f0f0f0; */
+  /* height: 100vh; */
+}
+body {
   background-color: #f0f0f0;
-  height: 100vh;
 }
 .css-480o17-MuiGrid-root {
   width: calc(100% + 10px) !important;
